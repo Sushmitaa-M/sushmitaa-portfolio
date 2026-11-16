@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif-display: "Bodoni Moda", "Italiana", "Cormorant Garamond", serif;
+  --font-editorial: "Italiana", "Bodoni Moda", serif;
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-script: "Pinyon Script", "Alex Brush", cursive;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --color-noir: #100D0D;
+  --color-charcoal: #171414;
+  --color-surface: #1E1919;
+  --color-surface-hover: #272121;
+  --color-champagne: #D8BDAA;
+  --color-champagne-light: #F3E8DF;
+  --color-champagne-muted: #A39183;
+  --color-burgundy: #721C24;
+  --color-burgundy-deep: #431016;
+  --color-burgundy-rich: #8C2230;
+  --color-burgundy-accent: #A82E40;
+  --color-border-subtle: rgba(216, 189, 170, 0.12);
+  --color-border-medium: rgba(216, 189, 170, 0.25);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background-color: #100D0D;
+  color: #D8BDAA;
+  font-family: var(--font-sans);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #100D0D;
+  color: #D8BDAA;
+  overflow-x: hidden;
+}
+
+/* Custom editorial typography utilities */
+.font-serif-display {
+  font-family: 'Bodoni Moda', 'Italiana', serif;
+}
+
+.font-editorial {
+  font-family: 'Italiana', 'Bodoni Moda', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Pinyon Script', 'Alex Brush', cursive;
+}
+
+.font-masthead {
+  font-family: 'Bodoni Moda', 'Italiana', 'Cormorant Garamond', serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  transform: scaleY(1.08);
+  transform-origin: center top;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #100D0D;
+}
+::-webkit-scrollbar-thumb {
+  background: #382A2A;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #721C24;
+}
+
+/* Subtle glow effects */
+.glow-burgundy {
+  box-shadow: 0 0 50px -10px rgba(114, 28, 36, 0.35);
+}
+
+.border-subtle {
+  border-color: rgba(216, 189, 170, 0.14);
+}
