@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif-display: "Bodoni Moda", "Italiana", "Cormorant Garamond", serif;
+  --font-serif-display: "DM Serif Display", "Bodoni Moda", "Italiana", serif;
   --font-editorial: "Italiana", "Bodoni Moda", serif;
   --font-cormorant: "Cormorant Garamond", serif;
   --font-script: "Pinyon Script", "Alex Brush", cursive;
@@ -42,7 +42,7 @@ body {
 
 /* Custom editorial typography utilities */
 .font-serif-display {
-  font-family: 'Bodoni Moda', 'Italiana', serif;
+  font-family: 'DM Serif Display', 'Bodoni Moda', 'Italiana', serif;
 }
 
 .font-editorial {

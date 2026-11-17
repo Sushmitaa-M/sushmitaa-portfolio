@@ -36,9 +36,9 @@ export default function HeroParticleHeading() {
     let animationFrameId = null;
     let isCancelled = false;
 
-    // Reference canvas resolution matching SVG viewBox (1440 x 240)
+    // Reference canvas resolution matching SVG viewBox (1440 x 260)
     const REF_WIDTH = 1440;
-    const REF_HEIGHT = 240;
+    const REF_HEIGHT = 260;
 
     // Canvas padding to allow particles to scatter wide across the hero background
     const PAD_X = 60;
@@ -64,21 +64,14 @@ export default function HeroParticleHeading() {
 
       // Render exact typography matching SVG
       offCtx.fillStyle = '#DFC1AC';
-      offCtx.font = '400 235px "Bodoni Moda", "Didot", "Bodoni 72", serif';
+      offCtx.font = '400 248px "DM Serif Display", "Bodoni Moda", serif';
       if ('letterSpacing' in offCtx) {
-        offCtx.letterSpacing = '0.05em';
+        offCtx.letterSpacing = '0.04em';
       }
 
-      // Exact horizontal scaling to match lengthAdjust="spacingAndGlyphs" textLength="1360"
-      const measured = offCtx.measureText('PORTFOLIO').width;
-      const scaleX = measured > 0 ? 1360 / measured : 0.85;
-
-      offCtx.save();
-      offCtx.scale(scaleX, 1);
       offCtx.textAlign = 'center';
       offCtx.textBaseline = 'alphabetic';
-      offCtx.fillText('PORTFOLIO', (REF_WIDTH / 2) / scaleX, 180);
-      offCtx.restore();
+      offCtx.fillText('PORTFOLIO', REF_WIDTH / 2, 195);
 
       const imgData = offCtx.getImageData(0, 0, REF_WIDTH, REF_HEIGHT);
       const data = imgData.data;
@@ -280,24 +273,19 @@ export default function HeroParticleHeading() {
         }}
       >
         <svg
-          viewBox="0 0 1440 240"
+          viewBox="0 0 1440 260"
           className="w-full h-auto overflow-visible select-none"
           style={{ filter: 'drop-shadow(0 4px 35px rgba(0,0,0,0.65))' }}
         >
           <text
             x="50%"
-            y="76%"
+            y="75%"
             textAnchor="middle"
             fill="#DFC1AC"
-            fontFamily="'Bodoni Moda', 'Didot', 'Bodoni 72', serif"
+            fontFamily="'DM Serif Display', 'Bodoni Moda', serif"
             fontWeight="400"
-            fontSize="235"
-            textLength="1360"
-            lengthAdjust="spacingAndGlyphs"
-            letterSpacing="0.05em"
-            style={{
-              fontVariationSettings: "'opsz' 96, 'wght' 400"
-            }}
+            fontSize="248"
+            letterSpacing="0.04em"
           >
             PORTFOLIO
           </text>

@@ -20,7 +20,7 @@ export default function ContactModal({ isOpen, onClose }) {
       window.addEventListener('keydown', handleKeyDown);
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose]);
@@ -47,7 +47,14 @@ export default function ContactModal({ isOpen, onClose }) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <div 
+        data-lenis-prevent="true"
+        data-lenis-prevent-wheel="true"
+        data-lenis-prevent-touch="true"
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+      >
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -59,24 +66,27 @@ export default function ContactModal({ isOpen, onClose }) {
 
         {/* Modal Window */}
         <motion.div
+          data-lenis-prevent="true"
+          data-lenis-prevent-wheel="true"
+          data-lenis-prevent-touch="true"
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.35, ease: 'easeOut' }}
-          className="relative w-full max-w-lg bg-[#141010] border border-[#D8BDAA]/25 rounded-xl shadow-2xl overflow-hidden z-10"
+          className="relative w-full max-w-lg bg-[#211316] border border-[#392A29] rounded-2xl shadow-2xl overflow-hidden z-10"
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-5 border-b border-[#D8BDAA]/15 bg-[#171313]">
+          <div className="flex items-center justify-between px-6 py-5 border-b border-[#392A29] bg-[#1a1012]">
             <div className="flex items-center gap-2">
-              <span className="font-editorial text-sm tracking-[0.25em] text-[#D8BDAA] uppercase font-medium">
+              <span className="font-editorial text-sm tracking-[0.25em] text-[#DFC1AC] uppercase font-medium">
                 SEND A MESSAGE
               </span>
-              <span className="text-[#8C2230]">✦</span>
+              <span className="text-[#9E354C]">✦</span>
             </div>
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-full border border-[#D8BDAA]/20 text-[#D8BDAA]/70 hover:text-white hover:border-[#D8BDAA] transition-all cursor-pointer"
+              className="p-1.5 rounded-full border border-[#392A29] text-[#DFC1AC] hover:text-white hover:border-[#9E354C] transition-all cursor-pointer"
               aria-label="Close modal"
             >
               <X size={18} />
@@ -88,14 +98,14 @@ export default function ContactModal({ isOpen, onClose }) {
             
             {/* Quick Email & GitHub Links */}
             <div className="space-y-2">
-              <div className="p-3.5 rounded-lg border border-[#D8BDAA]/15 bg-[#171313] flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 text-[#D8BDAA] min-w-0">
-                  <Mail size={16} className="text-[#8C2230] shrink-0" />
+              <div className="p-3.5 rounded-xl border border-[#392A29] bg-[#151011] flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5 text-[#DFC1AC] min-w-0">
+                  <Mail size={16} className="text-[#9E354C] shrink-0" />
                   <span className="font-mono text-xs truncate">{personal.email}</span>
                 </div>
                 <button
                   onClick={handleCopyEmail}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] tracking-wider uppercase border border-[#D8BDAA]/25 bg-[#120E0E] hover:border-[#D8BDAA] text-[#D8BDAA] transition-colors shrink-0"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] tracking-wider uppercase border border-[#392A29] bg-[#211316] hover:border-[#9E354C] text-[#DFC1AC] transition-colors shrink-0"
                 >
                   {copied ? (
                     <>
@@ -115,20 +125,20 @@ export default function ContactModal({ isOpen, onClose }) {
                 href={personal.githubUrl || "https://github.com/Sushmitaa-M"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-lg border border-[#D8BDAA]/12 bg-[#171313] hover:border-[#D8BDAA]/30 flex items-center justify-between gap-2 text-xs text-[#D8BDAA]/80 hover:text-white transition-colors"
+                className="p-3 rounded-xl border border-[#392A29] bg-[#151011] hover:border-[#9E354C] flex items-center justify-between gap-2 text-xs text-[#DFC1AC] hover:text-white transition-colors"
               >
                 <div className="flex items-center gap-2 font-mono text-xs">
-                  <span className="text-[#8C2230] font-semibold">GITHUB:</span>
+                  <span className="text-[#9E354C] font-semibold">GITHUB:</span>
                   <span>{personal.github || "github.com/Sushmitaa-M"}</span>
                 </div>
-                <span className="text-[10px] tracking-wider uppercase font-medium text-[#C04252]">Visit ↗</span>
+                <span className="text-[10px] tracking-wider uppercase font-medium text-[#9E354C]">Visit ↗</span>
               </a>
             </div>
 
             {/* Message Form */}
             <form onSubmit={handleSendMessage} className="space-y-4">
               <div>
-                <label className="block text-[10px] tracking-[0.2em] text-[#D8BDAA]/70 uppercase font-medium mb-1">
+                <label className="block text-[10px] tracking-[0.2em] text-[#B49A8C] uppercase font-mono font-medium mb-1">
                   Your Name
                 </label>
                 <input
@@ -137,12 +147,12 @@ export default function ContactModal({ isOpen, onClose }) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Elena Rostova"
-                  className="w-full px-3.5 py-2.5 rounded bg-[#1A1414] border border-[#D8BDAA]/20 text-[#F3E8DF] placeholder-[#D8BDAA]/30 text-xs focus:outline-none focus:border-[#D8BDAA] transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#151011] border border-[#392A29] text-[#F3E7DC] placeholder-[#B49A8C]/40 text-xs focus:outline-none focus:border-[#9E354C] transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] tracking-[0.2em] text-[#D8BDAA]/70 uppercase font-medium mb-1">
+                <label className="block text-[10px] tracking-[0.2em] text-[#B49A8C] uppercase font-mono font-medium mb-1">
                   Your Email
                 </label>
                 <input
@@ -151,12 +161,12 @@ export default function ContactModal({ isOpen, onClose }) {
                   value={senderEmail}
                   onChange={(e) => setSenderEmail(e.target.value)}
                   placeholder="e.g. client@organization.com"
-                  className="w-full px-3.5 py-2.5 rounded bg-[#1A1414] border border-[#D8BDAA]/20 text-[#F3E8DF] placeholder-[#D8BDAA]/30 text-xs focus:outline-none focus:border-[#D8BDAA] transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#151011] border border-[#392A29] text-[#F3E7DC] placeholder-[#B49A8C]/40 text-xs focus:outline-none focus:border-[#9E354C] transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] tracking-[0.2em] text-[#D8BDAA]/70 uppercase font-medium mb-1">
+                <label className="block text-[10px] tracking-[0.2em] text-[#B49A8C] uppercase font-mono font-medium mb-1">
                   Message / Project Scope
                 </label>
                 <textarea
@@ -165,13 +175,13 @@ export default function ContactModal({ isOpen, onClose }) {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Let's create something together..."
-                  className="w-full px-3.5 py-2.5 rounded bg-[#1A1414] border border-[#D8BDAA]/20 text-[#F3E8DF] placeholder-[#D8BDAA]/30 text-xs focus:outline-none focus:border-[#D8BDAA] transition-colors resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#151011] border border-[#392A29] text-[#F3E7DC] placeholder-[#B49A8C]/40 text-xs focus:outline-none focus:border-[#9E354C] transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-full border border-[#D8BDAA]/30 bg-[#721C24] hover:bg-[#8C2230] text-[#F3E8DF] text-xs tracking-[0.2em] uppercase font-medium transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+                className="w-full py-3 rounded-full border border-[#9E354C]/60 bg-[#35171F] hover:bg-[#9E354C] text-[#F3E7DC] text-xs tracking-[0.2em] uppercase font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg"
               >
                 <span>{sentNotice ? 'Opening Email Client...' : 'Dispatch Email'}</span>
                 <Send size={13} />
