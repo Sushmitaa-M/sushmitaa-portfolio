@@ -9,7 +9,13 @@ export default function WhatDefinesMyWork() {
     <section id="philosophy" className="py-20 sm:py-28 px-6 sm:px-10 bg-[#100D0D] border-t border-[#D8BDAA]/15 relative select-none">
       <div className="max-w-[1320px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 sm:pb-12 border-b border-[#D8BDAA]/15 gap-3 mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 sm:pb-12 border-b border-[#D8BDAA]/15 gap-3 mb-10"
+        >
           <div className="flex items-center gap-2">
             <h2 className="font-editorial text-sm sm:text-base tracking-[0.25em] text-[#D8BDAA] uppercase font-medium">
               WHAT DEFINES MY WORK
@@ -20,17 +26,22 @@ export default function WhatDefinesMyWork() {
           <span className="text-xs tracking-[0.2em] text-[#D8BDAA]/60 uppercase font-light">
             CORE PHILOSOPHY
           </span>
-        </div>
+        </motion.div>
 
         {/* 3-Column Layout Matching Stitch Screen */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 pt-4">
           {whatDefinesMyWork.map((item, idx) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.12 }}
+              viewport={{ once: true, amount: 0.15 }}
+              whileHover={{ y: -4 }}
+              transition={{
+                opacity: { duration: 0.65, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 0.65, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] },
+                hover: { duration: 0.3, ease: 'easeOut' }
+              }}
               className="flex flex-col justify-between p-6 sm:p-8 rounded-xl border border-[#D8BDAA]/15 bg-[#141010] hover:bg-[#181213] relative group hover:border-[#D8BDAA]/40 transition-all duration-300 shadow-xl"
             >
               <div>

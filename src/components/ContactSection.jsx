@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, MapPin, Copy, Check, ExternalLink, ArrowRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -36,14 +37,26 @@ export default function ContactSection({ onOpenContact }) {
       <div className="max-w-[1320px] mx-auto">
         
         {/* Enclosed Feature Box Matching Stitch Screen */}
-        <div className="relative rounded-2xl border border-[#D8BDAA]/18 bg-gradient-to-br from-[#181012] via-[#140E10] to-[#120D0E] p-8 sm:p-12 lg:p-16 overflow-hidden shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          className="relative rounded-2xl border border-[#D8BDAA]/18 bg-gradient-to-br from-[#181012] via-[#140E10] to-[#120D0E] p-8 sm:p-12 lg:p-16 overflow-hidden shadow-2xl"
+        >
           {/* Subtle Ambient Radial Glow */}
           <div className="absolute right-0 bottom-0 w-[500px] h-[500px] bg-radial from-[#721C24]/20 via-[#431016]/10 to-transparent blur-3xl pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {/* LEFT AREA: Typography & CTA (lg:col-span-7) */}
-            <div className="lg:col-span-7 space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-7 space-y-6"
+            >
               <div className="flex items-center gap-2 text-[10.5px] tracking-[0.25em] text-[#8C2230] uppercase font-mono font-semibold">
                 <span>HAVE AN IDEA IN MIND?</span>
                 <span className="text-[#D8BDAA]/40">•</span>
@@ -75,10 +88,16 @@ export default function ContactSection({ onOpenContact }) {
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
-            </div>
+            </motion.div>
 
             {/* RIGHT AREA: 3 Interactive Rows (lg:col-span-5) */}
-            <div className="lg:col-span-5 space-y-3.5">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-5 space-y-3.5"
+            >
               
               {/* Row 1: Email */}
               <div className="p-4 rounded-xl border border-[#D8BDAA]/15 bg-[#161012] hover:border-[#D8BDAA]/35 transition-colors flex items-center justify-between gap-3 group">
@@ -137,10 +156,10 @@ export default function ContactSection({ onOpenContact }) {
                 </span>
               </div>
 
-            </div>
+            </motion.div>
 
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

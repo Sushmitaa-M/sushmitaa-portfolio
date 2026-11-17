@@ -10,7 +10,13 @@ export default function AchievementsSection() {
     <section id="education" className="py-20 sm:py-28 px-6 sm:px-10 bg-[#100D0D] border-t border-[#D8BDAA]/15 relative">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex items-center justify-between pb-8 sm:pb-12 border-b border-[#D8BDAA]/15 mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center justify-between pb-8 sm:pb-12 border-b border-[#D8BDAA]/15 mb-10"
+        >
           <div className="flex items-center gap-2">
             <h2 className="font-editorial text-sm sm:text-base tracking-[0.25em] text-[#D8BDAA] uppercase font-medium">
               EDUCATION & CERTIFICATIONS
@@ -21,26 +27,32 @@ export default function AchievementsSection() {
           <span className="text-xs tracking-[0.2em] text-[#D8BDAA]/60 uppercase font-light hidden sm:inline">
             ACADEMIC FOUNDATION
           </span>
-        </div>
+        </motion.div>
 
         {/* Two-Column Grid: Education (Left) & Certifications / Honors (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14">
           
           {/* LEFT: Education Journey (lg:col-span-7) */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="flex items-center gap-2 text-xs tracking-[0.2em] text-[#D8BDAA]/70 uppercase font-semibold pb-2">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-2 text-xs tracking-[0.2em] text-[#D8BDAA]/70 uppercase font-semibold pb-2"
+            >
               <GraduationCap size={16} className="text-[#E05368]" />
               <span>ACADEMIC BACKGROUND</span>
-            </div>
+            </motion.div>
 
             <div className="space-y-5">
               {education.map((item, idx) => (
                 <motion.div
                   key={item.degree}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 22 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.12 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.65, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
                   className="p-6 rounded-lg border border-[#D8BDAA]/15 bg-[#161212] hover:border-[#D8BDAA]/35 transition-all group"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-2 border-b border-[#D8BDAA]/10">
@@ -75,19 +87,25 @@ export default function AchievementsSection() {
 
           {/* RIGHT: NPTEL Certifications & Technical Highlights (lg:col-span-5) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="flex items-center gap-2 text-xs tracking-[0.2em] text-[#D8BDAA]/70 uppercase font-semibold pb-2">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-2 text-xs tracking-[0.2em] text-[#D8BDAA]/70 uppercase font-semibold pb-2"
+            >
               <Award size={16} className="text-[#E05368]" />
               <span>CERTIFICATIONS & FOCUS</span>
-            </div>
+            </motion.div>
 
             <div className="space-y-4">
               {certifications.map((cert, idx) => (
                 <motion.div
                   key={cert.title}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.12 }}
+                  initial={{ opacity: 0, y: 22 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.65, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
                   className="p-5 rounded-lg border border-[#D8BDAA]/15 bg-[#171313] hover:border-[#D8BDAA]/30 transition-all"
                 >
                   <div className="flex items-start justify-between gap-3">

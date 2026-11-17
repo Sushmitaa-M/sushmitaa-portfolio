@@ -86,7 +86,13 @@ export default function SelectedProjects({ onSelectProject }) {
       <div className="max-w-[1320px] mx-auto">
         
         {/* Section Header Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 sm:pb-12 border-b border-[#D8BDAA]/15 gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row sm:items-center justify-between pb-8 sm:pb-12 border-b border-[#D8BDAA]/15 gap-4"
+        >
           <div className="flex items-center gap-2">
             <h2 className="font-editorial text-sm sm:text-base tracking-[0.25em] text-[#D8BDAA] uppercase font-medium">
               SELECTED PROJECTS
@@ -101,20 +107,24 @@ export default function SelectedProjects({ onSelectProject }) {
             <span>VIEW ALL PROJECTS</span>
             <span className="group-hover:translate-x-1 transition-transform">⟶</span>
           </a>
-        </div>
+        </motion.div>
 
         {/* 3-Column Editorial Grid matching Stitch Screen */}
         <div className="pt-10 sm:pt-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.03, y: -6 }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.15 }}
+              whileHover={{ y: -5 }}
+              transition={{
+                opacity: { duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] },
+                y: { duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] },
+                hover: { duration: 0.3, ease: 'easeOut' }
+              }}
               onClick={() => onSelectProject(project)}
-              className="group relative rounded-xl overflow-hidden border border-[#D8BDAA]/15 hover:border-[#D8BDAA]/60 bg-[#141010] cursor-pointer flex flex-col justify-between p-6 sm:p-7 shadow-2xl hover:shadow-[0_25px_60px_rgba(0,0,0,0.95),0_0_35px_rgba(140,34,48,0.25)] hover:z-30 transition-all duration-300"
+              className="group relative rounded-xl overflow-hidden border border-[#D8BDAA]/15 hover:border-[#D8BDAA]/60 bg-[#141010] cursor-pointer flex flex-col justify-between p-6 sm:p-7 shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_30px_rgba(140,34,48,0.2)] hover:z-30 transition-all duration-300"
             >
               {/* Background ambient lighting */}
               <div className="absolute inset-0 bg-radial from-[#721C24]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

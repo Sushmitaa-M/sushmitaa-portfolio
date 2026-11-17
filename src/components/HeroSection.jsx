@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Globe } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import heroPortrait from '../assets/hero_portrait.png';
+import HeroParticleHeading from './HeroParticleHeading';
 
 export default function HeroSection({ onOpenContact }) {
   const { personal } = portfolioData;
@@ -54,38 +55,9 @@ export default function HeroSection({ onOpenContact }) {
         </svg>
       </div>
 
-      {/* 3. LAYER 1: OVERSIZED "PORTFOLIO" TYPOGRAPHY (Behind Portrait) */}
+      {/* 3. LAYER 1: OVERSIZED "PORTFOLIO" TYPOGRAPHY WITH PARTICLES (Behind Portrait) */}
       <div className="absolute top-[13%] sm:top-[12%] lg:top-[10%] left-0 right-0 w-full flex justify-center z-10 pointer-events-none px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          className="w-[93%] max-w-[1420px] flex justify-center"
-        >
-          <svg
-            viewBox="0 0 1440 240"
-            className="w-full h-auto overflow-visible select-none"
-            style={{ filter: 'drop-shadow(0 4px 35px rgba(0,0,0,0.65))' }}
-          >
-            <text
-              x="50%"
-              y="76%"
-              textAnchor="middle"
-              fill="#DFC1AC"
-              fontFamily="'Bodoni Moda', 'Didot', 'Bodoni 72', serif"
-              fontWeight="400"
-              fontSize="235"
-              textLength="1360"
-              lengthAdjust="spacingAndGlyphs"
-              letterSpacing="0.05em"
-              style={{
-                fontVariationSettings: "'opsz' 96, 'wght' 400"
-              }}
-            >
-              PORTFOLIO
-            </text>
-          </svg>
-        </motion.div>
+        <HeroParticleHeading />
       </div>
 
       {/* 4. LAYER 2: CENTRAL PORTRAIT (Naturally overlaps lower half of letters, sits neatly above bottom divider) */}
